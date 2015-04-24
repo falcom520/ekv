@@ -1,0 +1,9 @@
+%% -*- erlang -*-
+{application, ekv,
+ [{description, "ekv"},
+  {vsn, "0.1"},
+  {modules, []},
+  {registered, []},
+  {mod, {'ekv_app', []}},
+  {env, []},
+  {applications, [kernel, stdlib, crypto]}]}.
