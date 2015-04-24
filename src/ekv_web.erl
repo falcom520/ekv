@@ -18,6 +18,7 @@ start(Options) ->
                    ?MODULE:loop(Req, DocRoot)
            end,
     ekv_store:start_link(),
+    ekv_auth:init(),
     mochiweb_http:start([{name, ?MODULE}, {loop, Loop} | Options1]).
 
 stop() ->
@@ -38,7 +39,7 @@ loop(Req, DocRoot) ->
                         Req:respond({500,?JSON_HEADER, []})
                 end;
             false ->
-                Req:respond({403,?JSON_HEADER,"Authorization errors\n"})
+                Req:respond({403,?JSON_HEADER,mochijson2:encode({struct,[{ret,403},{msg,<<"authorized fail">>}]})})
         end
     catch
         Type:What ->

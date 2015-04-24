@@ -7,6 +7,5 @@
 /TEST-*.xml
 /deps
 /.rebar
-*.swp
 *.beam
 *.dump
